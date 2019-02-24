@@ -1,0 +1,47 @@
+{% extends 'nav.html' %}
+{% block navbody %}
+<div class="container">
+	<h1 class="my-4">Restaurants 
+        <small><i>Near you</i></small>
+      </h1>
+      {% for row in r %}
+	      <div class="row">
+	        <div class="col-md-7">
+	          <a href="/logged/{{email}}/{{row[0]}}">
+	            <img src= {{ url_for('static',filename=row[1]) }} height='100%' class="col-md-7">
+	          </a>
+	        </div>
+	        <div class="col-md-5">
+	          <h3>{{row[0]}}</h3>
+	          <p>{{row[2]}}</p>
+	          <a class="btn btn-primary" href="/logged/{{email}}/{{row[0]}}">View Reviews</a>
+	        </div>
+	      </div><hr>
+      {% endfor %}
+      <p style="margin-left: 65%"><a href="/logged/{{email}}/addRestro">Click here if you want to add restaurant>>></a></p>
+</div>
+<br>
+<br>
+<div class="container">
+	<h1 class="my-4">Hotels 
+        <small><i>Near you</i></small>
+      </h1>
+      {% for row in h %}
+	      <div class="row">
+	        <div class="col-md-7">
+	          <a href="/logged/{{email}}/{{row[0]}}">
+	            <img src= {{ url_for('static',filename=row[1]) }} height='100%' class="col-md-7">
+	          </a>
+	        </div>
+	        <div class="col-md-5">
+	          <h3>{{row[0]}}</h3>
+	          <p>{{row[2]}}</p>
+	          <a class="btn btn-primary" href="/logged/{{email}}/{{row[0]}}">View Reviews</a>
+	        </div>
+	      </div><hr>
+      {% endfor %}
+      <p style="margin-left: 65%"><a href="/logged/{{email}}/addHotel">Click here if you want to add hotel>>></a></p>  
+</div>
+
+ 
+{% endblock %}

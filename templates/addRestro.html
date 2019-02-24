@@ -1,0 +1,23 @@
+{% extends 'nav.html' %}
+{% block navbody %}
+  {% from "static/_formhelpers.html" import render_field %}
+  <br>
+<div class="container jumbotron">
+  <h2>Add Restaurant</h2>
+  <form action="" method="POST" enctype=multipart/form-data>
+    <div class="form-group">
+    	{{render_field(form.name,class_="form-control",value="",placeholder="Enter name")}}
+    </div>
+    <div class="form-group">
+			{{render_field(form.details,class_="form-control",value="",placeholder="Enter Details")}}
+    </div>
+    <div>
+       <p>Image: <Br><input type=file name=file>
+         <div style="display: none;"><input type=submit value=Upload></div></p>
+    </div>
+    <div>
+      <p><input type=submit value=Submit></p>
+    </div>
+  </form>    
+</div>
+{% endblock %}

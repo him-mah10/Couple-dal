@@ -1,0 +1,86 @@
+{% extends 'nav.html' %}  
+{% block navbody %}  
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2 ml-5 mt-5 ">
+          <h3>Welcome to Couple Dal</h3>
+          <p>"{{c[0]}}" Loves "{{c[5]}}"</p>
+          <img src= {{ url_for('static',filename=c[14]) }} height="auto" width="100%">
+          <hr>
+          <form action="" method="POST" enctype=multipart/form-data>
+            <div>
+              <p>Update Your Profile Pic: <Br><input type=file name=file>
+                <div style="display: none;"><input type=submit value=Upload></div></p>
+            </div>
+            <div>
+            <p><input type=submit value=Submit></p>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-9 mt-5">
+          <h2>LoveBirds Near You:</h2>
+          <table class='table' width="100%" style="text-align: center;">
+            <tr>
+              <th width="35%">Image</th>
+              <th width="15%">LoveBirds</th>
+              <th width="15%">Age</th>
+              <th width="35%">Interests</th>
+            </tr>
+            {% for row in r %}
+              {% if row[2] not in d %}                          
+                <tr>
+                    <td><img src= {{ url_for('static',filename=row[14]) }} height="auto%" width="60%"></td>
+                    <td>"{{row[1]}}" Loves "{{row[6]}}" </td>
+                    <td>{{row[1]}}: {{row[3]}}<br>{{row[6]}}: {{row[8]}}</td>
+                    <td>{{row[1]}}: {{row[4]}}<br>{{row[6]}}: {{row[9]}}</td>
+                </tr>
+                <tr>
+                  <td colspan="5"><p><a href="/addFriend/{{email}} {{ row[2] }}"><input type="submit", class="btn btn-danger" value="Follow {{row[1]}} and {{ row[6] }}"></p></a></td>
+                </tr>
+              {%endif%}
+            {% endfor %}
+          </table>
+          <br><br><br>
+          <h2>LoveBirds You Are Following:</h2>
+          <table class='table' width="100%" style="text-align: center;">
+            <tr>
+              <th width="35%">Image</th>
+              <th width="15%">LoveBirds</th>
+              <th width="15%">Age</th>
+              <th width="35%">Interests</th>
+            </tr>
+            {% for row in r %}
+              {% if row[2] in d %}                          
+                <tr>
+                    <td><img src= {{ url_for('static',filename=row[14]) }} height="auto%" width="60%"></td>
+                    <td>"{{row[1]}}" Loves "{{row[6]}}" </td>
+                    <td>{{row[1]}}: {{row[3]}}<br>{{row[6]}}: {{row[8]}}</td>
+                    <td>{{row[1]}}: {{row[4]}}<br>{{row[6]}}: {{row[9]}}</td>
+                </tr>
+              {%endif%}
+            {% endfor %}
+          </table>
+          <br><br><br>
+          <h2>LoveBirds That Follow You:</h2>
+          <table class='table' width="100%" style="text-align: center;">
+            <tr>
+              <th width="35%">Image</th>
+              <th width="15%">LoveBirds</th>
+              <th width="15%">Age</th>
+              <th width="35%">Interests</th>
+            </tr>
+            {% for row in r %}
+              {% if row[2] in e %}                          
+                <tr>
+                    <td><img src= {{ url_for('static',filename=row[14]) }} height="auto%" width="60%"></td>
+                    <td>"{{row[1]}}" Loves "{{row[6]}}" </td>
+                    <td>{{row[1]}}: {{row[3]}}<br>{{row[6]}}: {{row[8]}}</td>
+                    <td>{{row[1]}}: {{row[4]}}<br>{{row[6]}}: {{row[9]}}</td>
+                </tr>
+              {%endif%}
+            {% endfor %}
+          </table>
+       </div>
+      </div>
+
+{% endblock %}

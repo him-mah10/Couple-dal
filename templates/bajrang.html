@@ -1,0 +1,63 @@
+{% extends 'nav.html' %}
+{% block head %}
+<style>
+	.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #FFA500;
+}
+</style>
+{% endblock %}
+{% block navbody %}
+<br>
+<br>
+<br>
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-2 ml-3 mt-2 ">
+    <img src='http://bajrangdal.online/wp-content/uploads/2017/10/cropped-Bajrand-Dal-Logo.png' height="auto" width="100%">
+</div>
+<div class="col-md-9 mt-2">
+<div class="container">
+  <h2>Bajrang Dal Activities Record</h2>
+  {% from "static/_formhelpers.html" import render_field %}
+  <form action="" method="POST">
+    <div class="form-group">
+    	{{render_field(form.location,class_="form-control",value="",placeholder="Location")}}
+    </div>
+    <div class="form-group">
+    	{{render_field(form.activity,class_="form-control",value="",placeholder="Activity Reported")}}
+    </div>
+    <p><input type="submit" onclick="alert('Thanks For The Response');" ,class="btn btn-primary" value="Submit"></p>
+  </form>
+</div>
+</div>
+</div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<div style="margin-left: 6%"><h2>Latest Bajrang Dal Activities:</h2></div><center>
+<div class="panel-body" style="margin-left: 6%;margin-right: 6%">
+    <table class="table table-responsive table-hover table-bordered table-list" style="width: 100%;">
+        <thead style="background-color: #FF4500">
+            <tr>
+                <th width="4%">#</th>
+      			<th width="20%" scope="col">Source User</th>
+      			<th width="20%" scope="col">Location</th>
+      			<th width="50%" scope="col">Details</th>
+            </tr> 
+        </thead>
+        <tbody>
+           	{% for row in r %}
+           	<tr>
+           		<th scope="row">{{loop.index}}</th>
+            	<td>{{row[0]}}</td>
+            	<td>{{row[1]}}</td>
+            	<td>{{row[2]}}</td>
+        	</tr>
+    		{% endfor %}  
+        </tbody>
+    </table>
+</div>
+</center>
+{% endblock %}

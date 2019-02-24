@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block head %}
+<style>
+      body {
+        padding-top: 54px;
+      }
+      @media (min-width: 992px) {
+        body {
+          padding-top: 56px;
+        }
+      }
+      img{
+        max-width: none;
+      }
+    </style>
+    {% endblock %}
+{% block body %}    
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <span class="navbar-brand">Couple Dal</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/logged/{{email}}">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logged/{{email}}/Bajrang">Bajrang Dal's Activity</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logged/{{email}}/Hickey">Hangout</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/Logout/{{email}}">Logout</a>
+            </li>            
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block navbody %} {% endblock %}
+{% endblock %}

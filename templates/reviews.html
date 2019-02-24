@@ -1,0 +1,27 @@
+{% extends 'nav.html' %}
+{% block navbody %}
+  {% from "static/_formhelpers.html" import render_field %}
+  <br><br>
+  <div class="container">
+  	<center>
+  	<h2>Reviews of <span style="color:red">{{row[0]}}</span></h2>
+  	<br><img src= {{ url_for('static',filename=row[1]) }} height='100%'>
+  	</center>
+  	<br>
+  	{% for w in r %}
+	      <div class="row">
+	        <div class="col-md-12">
+	          {{loop.index}}.) {{w}}
+	      </div></div>
+	      <hr>
+    {% endfor %}
+    <br><br>
+    <form action="" method="POST">
+    <div>
+    	{{render_field(form.review,class_="form-control",placeholder="Add your own review. (We gurantee anonymity)")}}
+    </div>
+    <p><input type="submit",class="btn btn-primary" value="Submit"></p>
+  </form>
+  </div>
+{% endblock %}
+ 
